@@ -69,3 +69,8 @@ button:hover{
 .links a:hover{
   text-decoration: underline;
 }
+
+#mensaje{
+    color: red; 
+    font-weight: bold;
+}
