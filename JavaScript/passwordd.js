@@ -12,10 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const usuarioIndex = usuarios.findIndex(
             (u) =>
-                u.tipoID === tipoID &&
-                u.numeroID === numeroID &&
-                u.email === email
+              u.tipoId === tipoID &&
+              u.numeroId === numeroID &&
+              u.correo === email
         );
+          
 
         if (usuarioIndex === -1) {
             alert("Usuario no encontrado. Verifica tus datos.");
