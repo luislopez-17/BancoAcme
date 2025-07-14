@@ -7,16 +7,39 @@
     <title>BANCO ACME</title>
 </head>
 <body>
+
     <div class="login">
         <img src="../assets/ChatGPT Image 13 jul 2025, 06_07_29 p.m..png" alt="logo">
         <h1>Banco Acme</h1>
         <h3>CREAR CUENTA</h3>
 
-        <input type="text" placeholder="Nombres" id="name" required>
-        <input type="text" placeholder="Apellidos" id="surnames" required>
-        <input type="text" placeholder="Direccion" id="Direction" required>
-        <input type="number" placeholder="Número de identificación" id="numberid" required>
+        <form id="registroForm">
+            <select id="typeID" required>
+                <option value="" disabled selected>Tipo de Identificación</option>
+                <option>Cédula</option>
+                <option>Pasaporte</option>
+            </select>
+            <input type="number" placeholder="Número de Identificación" id="numberid" required>
+            <input type="text" placeholder="Nombres" id="name" required>
+            <input type="text" placeholder="Apellidos" id="surnames" required>
+            <select id="gender" required>
+                <option value="" disabled selected>Género</option>
+                <option>Masculino</option>
+                <option>Femenino</option>
+                <option>No Binario</option>
+            </select>
+            <input type="number" placeholder="Telefono" id="phone" required>
+            <input type="email" placeholder="Correo Electronico" id="email" required>
+            <input type="text" placeholder="Direccion" id="direction" required>
+            <input type="text" placeholder="Ciudad de Residencia" id="city" required>
+            <input type="password" placeholder="Contraseña" id="password" required>
+            <input type="password" placeholder=" Confirmar Contraseña" id="ConfirmPassword" required>
+            <button type="submit">CREAR CUENTA</button>
 
+            <p id="mensaje"></p>
+        </form>
     </div>
+
+    <script src="../JavaScript/CreateAccount.js"></script>
 </body>
 </html>

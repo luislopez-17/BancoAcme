@@ -1,35 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Styles/styles.css">
-    <title>BANCO ACME</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../Styles/styles.css" />
+  <title>BANCO ACME</title>
 </head>
 <body>
-    <div class="login">
-        <img src="../assets/ChatGPT Image 13 jul 2025, 06_07_29 p.m..png" alt="logo">
-        <h1>Banco Acme</h1>
+  <div class="login">
+    <img src="../assets/ChatGPT Image 13 jul 2025, 06_07_29 p.m..png" alt="logo" />
+    <h1>Banco Acme</h1>
 
-        <form id="Login">
-            <select id="typeID" required>
-                <option value="">Tipo de Identificación</option>
-                <option value="CC">Cédula</option>
-                <option value="Cuenta">Número de Cuenta</option>
-            </select>
-        </form>
+    <!-- Formulario corregido -->
+    <form id="loginForm">
+      <select id="typeID" required>
+        <option value="" disabled selected>Tipo de Identificación</option>
+        <option value="Cédula">Cédula</option>
+        <option value="Pasaporte">Pasaporte</option>
+      </select>
 
-        <input type="number" placeholder="Número de Identificación" id="NumberID" required>
-        <input type="password" placeholder="Contraseña" id="password" required>
+      <input type="number" placeholder="Número de Identificación" id="numberid" required />
+      <input type="password" placeholder="Contraseña" id="password" required />
+      <button type="submit">Iniciar Sesión</button>
 
-        <button>Iniciar Sesión</button>
-    
+      <p id="mensaje"></p>
+    </form>
+
     <div class="links">
-            <a href="#">Crear Cuenta</a>
-            <a href="#">Recuperar Contraseña</a>
-        </div>
+      <a href="../Index/CreateAccount.html">Crear Cuenta</a>
+      <a href="#">Recuperar Contraseña</a>
     </div>
+  </div>
 
-    <script src="../JavaScript/script.js"></script>
+  <script src="../JavaScript/script.js"></script>
 </body>
 </html>
