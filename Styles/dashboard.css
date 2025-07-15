@@ -102,3 +102,73 @@ body {
         padding: 0.5rem 0.4rem;
     }
 }
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    text-align: center;
+}
+
+
+.content h1{
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.resumen-cuenta-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.resumen-cuenta-content-item {
+    background: #fffbe6;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.15);
+    padding: 2rem 2.5rem;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f3e7c3;
+    transition: box-shadow 0.2s;
+}
+
+.resumen-cuenta-content-item h3 {
+    margin-bottom: 0.7rem;
+    color: #bfa100;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.resumen-cuenta-content-item p {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0;
+    font-weight: 500;
+}
+
+.section#resumen-cuenta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+}
