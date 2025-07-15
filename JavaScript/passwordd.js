@@ -4,17 +4,17 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        const tipoID = document.getElementById("typeID").value;
-        const numeroID = document.getElementById("NumberID").value;
-        const email = document.getElementById("email").value;
+        const tipoId = document.getElementById("typeID").value;
+        const numeroId = document.getElementById("NumberID").value;
+        const correo = document.getElementById("email").value;
 
         let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
         const usuarioIndex = usuarios.findIndex(
             (u) =>
-                u.tipoID === tipoID &&
-                u.numeroID === numeroID &&
-                u.email === email
+                u.tipoId === tipoId &&
+                u.numeroId === numeroId &&
+                u.correo === correo
         );
 
         if (usuarioIndex === -1) {
@@ -36,6 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
         form.reset();
 
         // Redirección al login
-        window.location.href = "../index/Login.html";
+        window.location.href = "../Index/Login.html";
     });
 });

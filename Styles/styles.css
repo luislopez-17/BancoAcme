@@ -1,57 +1,115 @@
 body{
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #fffbe6 0%, #f3e7c3 100%);
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: url('https://www.transparenttextures.com/patterns/gold-dust.png');
+    opacity: 0.08;
 }
 
 .login{
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0 , 0 , 0.5);
-    width: 320px;
+    background: rgba(255,255,255,0.97);
+    padding: 36px 30px 30px 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.18);
+    width: 340px;
     text-align: center;
+    position: relative;
+    animation: fadeInUp 0.7s cubic-bezier(.39,.575,.565,1) both;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .login img{
     width: 80px;
     height: auto;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px #d4af3733;
+    background: #fffbe6;
+    margin-bottom: 10px;
 }
 
 .login h1{
-    color: #333333;
-    margin-bottom: 20px;
+    color: #bfa100;
+    margin-bottom: 18px;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px #fffbe6;
+    animation: fadeIn 1s;
+}
+
+.login h3 {
+    color: #7a6a19;
+    margin-bottom: 18px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 input, select{
     width: 90%;
     padding: 12px;
-    margin-bottom: 10px;
-    border: 1px solid #c0c0c0;
-    border-radius: 6px;
-    background-color: #f9f9f9;
-    font-size: 14px;
+    margin-bottom: 12px;
+    border: 1.5px solid #d4af37;
+    border-radius: 8px;
+    background-color: #fffbe6;
+    font-size: 15px;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+input:focus, select:focus {
+    border: 2px solid #bfa100;
+    box-shadow: 0 2px 8px #d4af3722;
+    outline: none;
 }
 
 button{
     width: 100%;
-    padding: 12px;
-    background-color: #d4af37;
-    color: white;
+    padding: 13px;
+    background: linear-gradient(90deg, #d4af37 60%, #ffe066 100%);
+    color: #7a6a19;
     font-weight: bold;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 5px;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    margin-bottom: 7px;
+    font-size: 1.08rem;
+    box-shadow: 0 2px 8px #d4af3722;
+    letter-spacing: 0.5px;
 }
-
 button:hover{
-    background-color: #b8860b;
+    background: linear-gradient(90deg, #ffe066 60%, #d4af37 100%);
+    color: #bfa100;
+    box-shadow: 0 4px 16px #d4af3733;
 }
 
 .links{
@@ -60,17 +118,23 @@ button:hover{
 }
 
 .links a{
-  color: #264653;
+  color: #bfa100;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 15px;
   margin: 0 5px;
+  transition: color 0.2s;
 }
 
 .links a:hover{
   text-decoration: underline;
+  color: #7a6a19;
 }
 
 #mensaje{
-    color: red; 
+    color: #bfa100;
     font-weight: bold;
+    margin-top: 10px;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    animation: fadeIn 1.2s;
 }

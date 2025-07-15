@@ -1,29 +1,38 @@
 body {
     font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
-    background: #fff;
+    background: linear-gradient(135deg, #fffbe6 0%, #f3e7c3 100%);
     color: #222;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
 }
 
 .dashboard-container {
     display: flex;
     min-height: 100vh;
-    background: #fff;
+    background: transparent;
+    position: relative;
 }
 
 .sidebar {
     width: 250px;
-    background: #fff;
+    background: linear-gradient(160deg, #fffbe6 60%, #d4af37 100%);
     color: #bfa100;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.06);
+    box-shadow: 2px 0 16px rgba(212,175,55,0.10);
+    z-index: 2;
+    transition: box-shadow 0.3s;
 }
 
 .sidebar-header {
     padding: 2rem 1rem 1rem 1.5rem;
     border-bottom: 1px solid #f3e7c3;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 .sidebar-header h2 {
     margin: 0;
@@ -32,6 +41,13 @@ body {
     letter-spacing: 1px;
     color: #d4af37;
     text-shadow: 0 2px 8px #fff2;
+}
+.sidebar-header img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px #d4af3733;
+    background: #fffbe6;
 }
 .menu {
     list-style: none;
@@ -42,17 +58,22 @@ body {
 .menu-item {
     padding: 1rem 1.5rem;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-    font-size: 1.05rem;
+    transition: background 0.3s, color 0.3s, border-left 0.3s;
+    font-size: 1.08rem;
     border-left: 4px solid transparent;
-    color: #333333;
+    color: #7a6a19;
     background: transparent;
     position: relative;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-radius: 0 20px 20px 0;
+    margin-bottom: 0.2rem;
 }
 .menu-item:hover, .menu-item.active {
-    background: #f7f6f2;
+    background: linear-gradient(90deg, #fffbe6 60%, #ffe066 100%);
     border-left: 4px solid #FFD700;
-    color: #222;
+    color: #bfa100;
+    box-shadow: 0 2px 8px #d4af3722;
 }
 .menu-item.active::before {
     content: '';
@@ -65,8 +86,8 @@ body {
     border-radius: 0 4px 4px 0;
 }
 .menu-item:focus {
-    background: #fff;
-    color: #222;
+    background: #fffbe6;
+    color: #bfa100;
 }
 
 .message {
@@ -171,4 +192,145 @@ body {
     background: none;
     box-shadow: none;
     border-radius: 0;
+}
+
+/* --- Mejoras visuales para el dashboard --- */
+
+main#contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+
+main#contenido section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.18);
+    padding: 2.5rem 2rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeInUp 0.7s cubic-bezier(.39,.575,.565,1) both;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main#contenido h2 {
+    color: #bfa100;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px #fffbe6;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+main#contenido p, main#contenido ul, main#contenido table {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 1rem;
+    animation: fadeIn 1.2s;
+}
+
+main#contenido table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+    background: #fffbe6;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px #d4af3722;
+}
+main#contenido th, main#contenido td {
+    border: 1px solid #f3e7c3;
+    padding: 0.7rem 1rem;
+    text-align: left;
+}
+main#contenido th {
+    background: #fffbe6;
+    color: #bfa100;
+}
+
+main#contenido button {
+    padding: 0.8rem 2rem;
+    background: linear-gradient(90deg, #d4af37 60%, #ffe066 100%);
+    color: #7a6a19;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 8px #d4af3722;
+    letter-spacing: 0.5px;
+}
+main#contenido button:hover {
+    background: linear-gradient(90deg, #ffe066 60%, #d4af37 100%);
+    color: #bfa100;
+    box-shadow: 0 4px 16px #d4af3733;
+}
+
+main#contenido input, main#contenido select {
+    width: 90%;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    border: 1px solid #d4af37;
+    border-radius: 6px;
+    background-color: #fffbe6;
+    font-size: 1rem;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+main#contenido input:focus, main#contenido select:focus {
+    border: 1.5px solid #bfa100;
+    box-shadow: 0 2px 8px #d4af3722;
+    outline: none;
+}
+
+/* Sutiles partículas doradas de fondo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: url('https://www.transparenttextures.com/patterns/gold-dust.png');
+    opacity: 0.08;
+}
+
+@media (max-width: 700px) {
+    main#contenido section {
+        padding: 1.2rem 0.5rem;
+        max-width: 98vw;
+    }
+    .sidebar {
+        width: 100px;
+        min-width: 80px;
+    }
+    .sidebar-header h2 {
+        font-size: 1rem;
+    }
 }
