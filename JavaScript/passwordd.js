@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 u.numeroId === numeroId &&
                 u.correo === correo
         );
+          
 
         if (usuarioIndex === -1) {
             alert("Usuario no encontrado. Verifica tus datos.");
