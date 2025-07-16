@@ -38,6 +38,10 @@ body {
     text-shadow: 0 2px 8px #bfa10033;
 }
 
+.login h3{
+    color:#ffe066 ;
+}
+
 form#loginForm select,
 form#loginForm input {
     width: 100%;
