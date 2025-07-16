@@ -144,7 +144,16 @@ function actualizarUsuario() {
 
 function realizarConsignacion() {
   const valor = parseFloat(document.getElementById("valorConsignar").value);
-  if (isNaN(valor) || valor <= 0) return alert("Valor inválido");
+
+  if (isNaN(valor) || valor <= 0) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Valor inválido',
+      text: 'Por favor ingresa un número mayor a cero.',
+    });
+    return;
+  }
+
   const ref = generarReferencia();
   const transaccion = {
     cuenta: usuario.cuenta,
@@ -154,9 +163,22 @@ function realizarConsignacion() {
     concepto: "Consignación por canal electrónico",
     valor
   };
+
   usuario.saldo += valor;
   guardarTransaccion(transaccion);
   actualizarUsuario();
+
+  Swal.fire({
+    icon: 'success',
+    title: 'Consignación Exitosa',
+    html: `
+      <p>Ref: <strong>${ref}</strong></p>
+      <p>Valor: <strong>$${valor.toLocaleString()}</strong></p>
+      <p>Nuevo saldo: <strong>$${usuario.saldo.toLocaleString()}</strong></p>
+    `,
+    confirmButtonText: 'Aceptar'
+  });
+
   document.getElementById("resumenConsignacion").innerHTML = `
     <p>Consignación exitosa:</p>
     <ul>
@@ -168,9 +190,19 @@ function realizarConsignacion() {
   `;
 }
 
+
 function realizarRetiro() {
   const valor = parseFloat(document.getElementById("valorRetiro").value);
-  if (isNaN(valor) || valor <= 0 || valor > usuario.saldo) return alert("Saldo insuficiente o valor inválido");
+
+  if (isNaN(valor) || valor <= 0 || valor > usuario.saldo) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error en el retiro',
+      text: 'Saldo insuficiente o valor inválido.',
+    });
+    return;
+  }
+
   const ref = generarReferencia();
   const transaccion = {
     cuenta: usuario.cuenta,
@@ -180,9 +212,22 @@ function realizarRetiro() {
     concepto: "Retiro de dinero",
     valor
   };
+
   usuario.saldo -= valor;
   guardarTransaccion(transaccion);
   actualizarUsuario();
+
+  Swal.fire({
+    icon: 'success',
+    title: 'Retiro Exitoso',
+    html: `
+      <p>Ref: <strong>${ref}</strong></p>
+      <p>Valor: <strong>$${valor.toLocaleString()}</strong></p>
+      <p>Nuevo saldo: <strong>$${usuario.saldo.toLocaleString()}</strong></p>
+    `,
+    confirmButtonText: 'Aceptar'
+  });
+
   document.getElementById("resumenRetiro").innerHTML = `
     <p>Retiro exitoso:</p>
     <ul>
@@ -194,13 +239,21 @@ function realizarRetiro() {
   `;
 }
 
+
 function realizarPago() {
   const servicio = document.getElementById("servicio").value;
   const refPago = document.getElementById("refPago").value;
   const valor = parseFloat(document.getElementById("valorPago").value);
+
   if (!servicio || !refPago || isNaN(valor) || valor <= 0 || valor > usuario.saldo) {
-    return alert("Datos inválidos o saldo insuficiente");
+    Swal.fire({
+      icon: 'error',
+      title: 'Error en el pago',
+      text: 'Datos inválidos o saldo insuficiente.',
+    });
+    return;
   }
+
   const ref = generarReferencia();
   const transaccion = {
     cuenta: usuario.cuenta,
@@ -210,9 +263,23 @@ function realizarPago() {
     concepto: `Pago de servicio público ${servicio}`,
     valor
   };
+
   usuario.saldo -= valor;
   guardarTransaccion(transaccion);
   actualizarUsuario();
+
+  Swal.fire({
+    icon: 'success',
+    title: 'Pago Exitoso',
+    html: `
+      <p>Servicio: <strong>${servicio}</strong></p>
+      <p>Referencia de pago: <strong>${refPago}</strong></p>
+      <p>Monto: <strong>$${valor.toLocaleString()}</strong></p>
+      <p>Nuevo saldo: <strong>$${usuario.saldo.toLocaleString()}</strong></p>
+    `,
+    confirmButtonText: 'Aceptar'
+  });
+
   document.getElementById("resumenPago").innerHTML = `
     <p>Pago exitoso:</p>
     <ul>
@@ -225,19 +292,36 @@ function realizarPago() {
   `;
 }
 
+
 function generarExtracto() {
   const anio = parseInt(document.getElementById("anio").value);
   const mes = parseInt(document.getElementById("mes").value);
-  if (!anio || !mes || mes < 1 || mes > 12) return alert("Datos inválidos");
+
+  if (!anio || !mes || mes < 1 || mes > 12) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Datos inválidos',
+      text: 'Por favor ingresa un mes (1-12) y un año válidos.',
+    });
+    return;
+  }
+
   const resultado = document.getElementById("resultadoExtracto");
   const movimientos = transacciones.filter(t => {
     const [d, m, y] = t.fecha.split("/");
     return parseInt(y) === anio && parseInt(m) === mes && t.cuenta === usuario.cuenta;
   });
+
   if (movimientos.length === 0) {
-    resultado.innerHTML = "<p>No hay movimientos para ese periodo.</p>";
+    Swal.fire({
+      icon: 'info',
+      title: 'Sin movimientos',
+      text: 'No hay movimientos registrados para ese periodo.',
+    });
+    resultado.innerHTML = "";
     return;
   }
+
   resultado.innerHTML = `
     <table border="1" width="100%">
       <tr><th>Fecha</th><th>Ref</th><th>Tipo</th><th>Concepto</th><th>Valor</th></tr>
@@ -254,6 +338,7 @@ function generarExtracto() {
     <button onclick="window.print()">Imprimir</button>
   `;
 }
+
 
 function cerrarSesion() {
   localStorage.removeItem("usuarioActivo");
