@@ -1,140 +1,110 @@
-body{
-    background: linear-gradient(135deg, #fffbe6 0%, #f3e7c3 100%);
-    font-family: Arial, Helvetica, sans-serif;
+body {
+    background: #18151f;
+    font-family: 'Segoe UI', Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
 }
 
-body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    pointer-events: none;
-    z-index: 0;
-    background: url('https://www.transparenttextures.com/patterns/gold-dust.png');
-    opacity: 0.08;
-}
-
-.login{
-    background: rgba(255,255,255,0.97);
-    padding: 36px 30px 30px 30px;
+.login {
+    background: #18151f;
+    padding: 38px 32px 32px 32px;
     border-radius: 18px;
-    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.18);
+    box-shadow: 0 8px 32px #00000080, 0 1.5px 0.5px #2d273a inset;
     width: 340px;
     text-align: center;
     position: relative;
-    animation: fadeInUp 0.7s cubic-bezier(.39,.575,.565,1) both;
+    border: 1.5px solid #bfa10044;
 }
 
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.login img{
+.login img {
     width: 80px;
     height: auto;
     border-radius: 50%;
-    box-shadow: 0 2px 8px #d4af3733;
-    background: #fffbe6;
+    background: transparent;
     margin-bottom: 10px;
+    box-shadow: none;
 }
 
-.login h1{
-    color: #bfa100;
+.login h1 {
+    color: #ffe066;
     margin-bottom: 18px;
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 1px;
-    text-shadow: 0 2px 8px #fffbe6;
-    animation: fadeIn 1s;
+    text-shadow: 0 2px 8px #bfa10033;
 }
 
-.login h3 {
-    color: #7a6a19;
-    margin-bottom: 18px;
-    font-size: 1.1rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-input, select{
-    width: 90%;
+form#loginForm select,
+form#loginForm input {
+    width: 100%;
     padding: 12px;
-    margin-bottom: 12px;
-    border: 1.5px solid #d4af37;
+    margin-bottom: 14px;
+    border: 1.5px solid #bfa100;
     border-radius: 8px;
-    background-color: #fffbe6;
+    background: #18151f;
+    color: #ffe066;
     font-size: 15px;
     transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px #00000033 inset;
 }
-input:focus, select:focus {
-    border: 2px solid #bfa100;
-    box-shadow: 0 2px 8px #d4af3722;
+form#loginForm select:focus,
+form#loginForm input:focus {
+    border: 2px solid #ffe066;
     outline: none;
+    box-shadow: 0 0 0 2px #bfa10044;
 }
 
-button{
+form#loginForm input::placeholder {
+    color: #bfa100cc;
+    opacity: 1;
+}
+
+form#loginForm button {
     width: 100%;
     padding: 13px;
-    background: linear-gradient(90deg, #d4af37 60%, #ffe066 100%);
-    color: #7a6a19;
+    background: #ffe066;
+    color: #18151f;
     font-weight: bold;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-    margin-bottom: 7px;
     font-size: 1.08rem;
-    box-shadow: 0 2px 8px #d4af3722;
+    box-shadow: 0 2px 8px #bfa10033;
     letter-spacing: 0.5px;
+    margin-bottom: 7px;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
 }
-button:hover{
-    background: linear-gradient(90deg, #ffe066 60%, #d4af37 100%);
+form#loginForm button:hover {
+    background: #bfa100;
+    color: #ffe066;
+    box-shadow: 0 4px 16px #bfa10055;
+}
+
+.links {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.links a {
+    color: #ffe066;
+    text-decoration: none;
+    font-size: 15px;
+    margin: 0 10px;
+    transition: color 0.2s;
+}
+.links a:hover {
+    text-decoration: underline;
     color: #bfa100;
-    box-shadow: 0 4px 16px #d4af3733;
 }
 
-.links{
-  text-align: center;
-  margin-top: 15px;
-}
-
-.links a{
-  color: #bfa100;
-  text-decoration: none;
-  font-size: 15px;
-  margin: 0 5px;
-  transition: color 0.2s;
-}
-
-.links a:hover{
-  text-decoration: underline;
-  color: #7a6a19;
-}
-
-#mensaje{
-    color: #bfa100;
+#mensaje {
+    color: #ffe066;
     font-weight: bold;
     margin-top: 10px;
     font-size: 1rem;
     letter-spacing: 0.5px;
-    animation: fadeIn 1.2s;
 }

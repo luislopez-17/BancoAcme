@@ -1,8 +1,8 @@
 body {
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
-    background: linear-gradient(135deg, #fffbe6 0%, #f3e7c3 100%);
-    color: #222;
+    background: #18151f;
+    color: #ffe066;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
@@ -17,19 +17,18 @@ body {
 
 .sidebar {
     width: 250px;
-    background: linear-gradient(160deg, #fffbe6 60%, #d4af37 100%);
-    color: #bfa100;
+    background: #18151f;
+    color: #ffe066;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    box-shadow: 2px 0 16px rgba(212,175,55,0.10);
+    box-shadow: 2px 0 16px #00000080;
     z-index: 2;
-    transition: box-shadow 0.3s;
 }
 
 .sidebar-header {
     padding: 2rem 1rem 1rem 1.5rem;
-    border-bottom: 1px solid #f3e7c3;
+    border-bottom: 1px solid #bfa10044;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -39,15 +38,14 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 1px;
-    color: #d4af37;
-    text-shadow: 0 2px 8px #fff2;
+    color: #ffe066;
+    text-shadow: 0 2px 8px #bfa10033;
 }
 .sidebar-header img {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    box-shadow: 0 2px 8px #d4af3733;
-    background: #fffbe6;
+    background: transparent;
 }
 .menu {
     list-style: none;
@@ -61,7 +59,7 @@ body {
     transition: background 0.3s, color 0.3s, border-left 0.3s;
     font-size: 1.08rem;
     border-left: 4px solid transparent;
-    color: #7a6a19;
+    color: #ffe066;
     background: transparent;
     position: relative;
     font-weight: 500;
@@ -70,10 +68,10 @@ body {
     margin-bottom: 0.2rem;
 }
 .menu-item:hover, .menu-item.active {
-    background: linear-gradient(90deg, #fffbe6 60%, #ffe066 100%);
-    border-left: 4px solid #FFD700;
+    background: #232032;
+    border-left: 4px solid #ffe066;
     color: #bfa100;
-    box-shadow: 0 2px 8px #d4af3722;
+    box-shadow: 0 2px 8px #bfa10022;
 }
 .menu-item.active::before {
     content: '';
@@ -82,11 +80,11 @@ body {
     top: 0;
     height: 100%;
     width: 4px;
-    background: #FFD700;
+    background: #ffe066;
     border-radius: 0 4px 4px 0;
 }
 .menu-item:focus {
-    background: #fffbe6;
+    background: #232032;
     color: #bfa100;
 }
 
@@ -250,7 +248,7 @@ main#contenido h2 {
 
 main#contenido p, main#contenido ul, main#contenido table {
     font-size: 1.1rem;
-    color: #333;
+    color: #a0a0a0;
     margin-bottom: 1rem;
     animation: fadeIn 1.2s;
 }
@@ -333,4 +331,66 @@ body::before {
     .sidebar-header h2 {
         font-size: 1rem;
     }
+}
+
+main#contenido section, .resumen-cuenta-content-item {
+    background: #232032;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px #00000080, 0 1.5px 0.5px #2d273a inset;
+    border: 1.5px solid #bfa10044;
+    color: #ffe066;
+}
+
+main#contenido h2, .resumen-cuenta-content-item h3 {
+    color: #ffe066;
+    text-shadow: 0 2px 8px #bfa10033;
+}
+
+main#contenido input, main#contenido select, .resumen-cuenta-content-item input, .resumen-cuenta-content-item select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 14px;
+    border: 1.5px solid #bfa100;
+    border-radius: 8px;
+    background: #18151f;
+    color: #ffe066;
+    font-size: 15px;
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px #00000033 inset;
+}
+main#contenido input:focus, main#contenido select:focus, .resumen-cuenta-content-item input:focus, .resumen-cuenta-content-item select:focus {
+    border: 2px solid #ffe066;
+    outline: none;
+    box-shadow: 0 0 0 2px #bfa10044;
+}
+
+main#contenido button, .resumen-cuenta-content-item button {
+    width: 100%;
+    padding: 13px;
+    background: #ffe066;
+    color: #18151f;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.08rem;
+    box-shadow: 0 2px 8px #bfa10033;
+    letter-spacing: 0.5px;
+    margin-bottom: 7px;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+main#contenido button:hover, .resumen-cuenta-content-item button:hover {
+    background: #bfa100;
+    color: #ffe066;
+    box-shadow: 0 4px 16px #bfa10055;
+}
+
+a {
+    color: #ffe066;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a:hover {
+    color: #bfa100;
+    text-decoration: underline;
 }
