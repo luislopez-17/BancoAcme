@@ -347,12 +347,43 @@ function cerrarSesion() {
 
 // --- NUEVO: Manejo de menú lateral ---
 document.addEventListener('DOMContentLoaded', function() {
+  // Elementos del menú hamburguesa
+  const hamburgerMenu = document.getElementById('hamburgerMenu');
+  const sidebar = document.getElementById('sidebar');
+  
+  // Crear overlay para cerrar menú
+  const overlay = document.createElement('div');
+  overlay.className = 'sidebar-overlay';
+  document.body.appendChild(overlay);
+
+  // Toggle del menú hamburguesa
+  hamburgerMenu.addEventListener('click', function() {
+    hamburgerMenu.classList.toggle('active');
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+  });
+
+  // Cerrar menú al hacer clic en overlay
+  overlay.addEventListener('click', function() {
+    hamburgerMenu.classList.remove('active');
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+  });
+
   // Asignar eventos a los items del menú
   document.querySelectorAll('.menu-item').forEach(item => {
     item.addEventListener('click', function() {
       document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
       this.classList.add('active');
       const section = this.getAttribute('data-section');
+      
+      // Cerrar menú en móviles después de seleccionar opción
+      if (window.innerWidth <= 768) {
+        hamburgerMenu.classList.remove('active');
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+      }
+      
       if (section === 'cerrar-sesion') {
         localStorage.removeItem('usuarioActivo');
         window.location.href = 'Login.html';
