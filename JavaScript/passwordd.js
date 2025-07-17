@@ -1,42 +1,65 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("Login");
+    const form = document.getElementById("loginForm");
 
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
+    form.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-        const tipoId = document.getElementById("typeID").value;
-        const numeroId = document.getElementById("NumberID").value;
-        const correo = document.getElementById("email").value;
+    const tipoId = document.getElementById("typeID").value;
+    const numeroId = document.getElementById("NumberID").value;
+    const correo = document.getElementById("email").value;
 
-        let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-        const usuarioIndex = usuarios.findIndex(
-            (u) =>
-                u.tipoId === tipoId &&
-                u.numeroId === numeroId &&
-                u.correo === correo
-        );
-          
+    const usuarioIndex = usuarios.findIndex(
+        (u) =>
+            u.tipoId === tipoId &&
+            u.numeroId === numeroId &&
+            u.correo === correo
+    );
 
-        if (usuarioIndex === -1) {
-            alert("Usuario no encontrado. Verifica tus datos.");
-            return;
+    if (usuarioIndex === -1) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Usuario no encontrado',
+            text: 'Verifica tus datos e inténtalo de nuevo.',
+        });
+        return;
+    }
+
+    const { value: nuevaContraseña } = await Swal.fire({
+        title: 'Nueva contraseña',
+        input: 'password',
+        inputLabel: 'Escribe tu nueva contraseña',
+        inputPlaceholder: 'Mínimo 4 caracteres',
+        inputAttributes: {
+            minlength: 4,
+            autocapitalize: 'off',
+            autocorrect: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Guardar',
+        cancelButtonText: 'Cancelar',
+        preConfirm: (value) => {
+            if (!value || value.length < 4) {
+                Swal.showValidationMessage('Debe tener al menos 4 caracteres');
+            }
         }
+    });
 
-        const nuevaContraseña = prompt("Escribe tu nueva contraseña:");
+    if (!nuevaContraseña) return;
 
-        if (!nuevaContraseña || nuevaContraseña.length < 4) {
-            alert("Contraseña no válida. Debe tener al menos 4 caracteres.");
-            return;
-        }
+    usuarios[usuarioIndex].password = nuevaContraseña;
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
-        usuarios[usuarioIndex].password = nuevaContraseña;
-        localStorage.setItem("usuarios", JSON.stringify(usuarios));
-
-        alert("Contraseña actualizada correctamente.");
+    Swal.fire({
+        icon: 'success',
+        title: 'Contraseña actualizada',
+        text: 'Tu contraseña fue cambiada exitosamente.',
+        confirmButtonText: 'Continuar'
+    }).then(() => {
         form.reset();
-
-        // Redirección al login
         window.location.href = "../Index/Login.html";
     });
+});
+
 });
